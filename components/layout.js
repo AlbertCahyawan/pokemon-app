@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Navbar from './navbar'
+// import icon from '../assets/icons/pokemonIcon.png'
+
 export default function Layout({children}) {
   return (
     <div className='Layout'>

@@ -12,13 +12,23 @@ export default function PokemonCard(props) {
         <h2 className="description-Name">
           {props.name}
         </h2>
-        <div className="description-types">
-          <span className="types-pill">
-            Grass
-          </span> 
+        { props.remove ? 
+        <div className="description-button">
+          <button onClick={ ()=> props.releasePokemon( props.name) } >Release</button> 
         </div>
+        :
+        <></>
+        }
+        
       </div>
     </div>
  
   )
+}
+
+PokemonCard.defaultProps = {
+  id: 1,
+  name: "Bulbasaur",
+  url:'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png',
+  remove: false,
 }

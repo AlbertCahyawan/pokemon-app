@@ -8,6 +8,11 @@
     justify-content: center;
     align-self: center;
     max-width: 1280px;
+    .pokemon-total{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
     .pokemon-load{
         width: 100%;
         margin: 1rem;
@@ -26,8 +31,13 @@
     display: flex;
     flex-direction: row; 
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1280px;
+    align-self: center;
+    max-width: 1280px; 
+    .pokemon-total{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
     .pokemon-load{
         width: 100%;
         margin: 1rem;
@@ -35,6 +45,9 @@
         button{
             padding:8px 150px;
         }
+    }
+    .pokemon-click-wrapper{
+        cursor: pointer;
     }
     
 }
@@ -64,18 +77,10 @@
             font-weight: 700; 
             margin: 0px;
         }
-        .description-types{
-            display: flex;
-            flex-wrap: wrap;
-            .types-pill{
-                padding: 4px 24px;
-                margin-right: 4px;
-                margin-bottom: 4px;
-                border-radius: 4px;
-                background: #9bcc50;
-                color: black;
-                flex-wrap: wrap;  
-            }
+        .description-button{ 
+            button{
+                width: 100%;
+            } 
         }
        
     }
@@ -107,24 +112,19 @@
             border-left: 1px solid white;
             text-align: right;
         }
-    }
-    .pokemon-name{
-        text-align: center;
-        span{
-            color: #616161 ;  
-        }
-    }
-    .catch-pokemon{
-        margin: 1rem;
-        button{
-            width: 100%;
-        }
-    }
+    }  
     .pokemon-detail-container{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: center;
         margin: 1rem ;
+        .pokemon-name{
+            text-align: center;
+            span{
+                color: #616161 ;  
+            }
+        }
         .pokemon-stats, .pokemon-data{
             width: 400px;
         }
@@ -139,45 +139,14 @@
                     width: 100%;
                     object-fit: cover;
                 } 
-            } 
-            .pokemon-profile{
-                display: flex;
-                flex-wrap: wrap;
-                background: #a4a4a4;
-                border-radius: 4px;
-                padding: 1rem;
-                .profile-title{
+            }  
+            .catch-pokemon{ 
+                button{
                     width: 100%;
-                    margin-top: 0px;
-                    font-weight: 400;
-                }
-                .profile-stats{
-                    width: 50%; 
-                    margin-bottom: 1rem;
-                } 
-            }
-        }
-        .pokemon-data{
-            flex-direction: column;
-            .pokemon-info{
-                margin: 1rem 0;
-                border-radius: 4px;
-                padding: 1rem;
-                background: #30a7d7;
-                .info-description{
-                    display: inline-block;
-                    width: 50%;
-                    .info-title{
-                        margin:0px;
-                        color: #fff;
-                    }
-                    .info-detail{
-                        margin: 1rem 0px;
-                        color: black;
-                    }
                 }
             }
             .pokemon-type{ 
+                margin-bottom: 1rem;
                 .pokemon-type-list{ 
                     flex-wrap: wrap;  
                     span{
@@ -190,6 +159,33 @@
                     }
                 }
             }
+        }
+        
+        .pokemon-data{
+            flex-direction: column;
+            .pokemon-info{
+                border-radius: 4px;
+                padding: 1rem;
+                background: #30a7d7;
+                h2{
+                    margin: 0px;
+                    margin-bottom: 8px;
+                }
+                .info-description{
+                    display: inline-block;
+                    width: 50%;
+                    
+                    .info-title{
+                        margin:0px;
+                        color: #fff;
+                    }
+                    .info-detail{
+                        margin: 1rem 0px;
+                        color: black;
+                    }
+                }
+            }
+            
         }
         @media only screen and (max-width: 672px) {
             .pokemon-stats{ 
