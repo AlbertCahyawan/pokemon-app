@@ -22,29 +22,24 @@ export default function MyPokemonList() {
     if(release){
       let releaseObj = Object.assign(myPokemon)
       if( releaseObj.list.hasOwnProperty( name) ){
-        releaseObj.total -= 1;
         delete releaseObj.list[name]   
-        localStorage.setItem('MyPokemon',  JSON.stringify(releaseObj) )  
-        // force rerender
-        setforceRerender( forceRerender +=1 )
-        setMyPokemon( Object.assign(releaseObj)) 
+        localStorage.setItem('MyPokemon',  JSON.stringify(releaseObj) )   
+        setMyPokemon({
+          total:myPokemon.total - 1,
+          list:releaseObj.list
+        }) 
       }
     }
      
   } 
 
-  // too force rerender state
-  const divStyle = {
-    display:'none'
-  };
   return (
     <Layout> 
       <Head>
         <title>my Pokemon List</title>
       </Head>
       <div className="personal-pokemon-list">  
-        <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div> 
-        <span style={divStyle}>{forceRerender}</span>
+        <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div>  
         { Object.keys(myPokemon.list).map((key,i)=>{
             return ( 
               <PokemonCard

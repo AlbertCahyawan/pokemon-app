@@ -69,15 +69,19 @@
             object-fit: contain;
         }
     }
-    .pokemon-card-description{
+    .pokemon-card-description{ 
         .description-id{
             color:#919191; 
         }
         .description-Name{
             font-weight: 700; 
             margin: 0px;
+            height: 64px;
         }
         .description-button{ 
+            margin-top: 8px;
+            height: 30px;
+            width: 100%;
             button{
                 width: 100%;
             } 

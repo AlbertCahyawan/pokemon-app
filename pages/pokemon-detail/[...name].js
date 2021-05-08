@@ -36,27 +36,29 @@ export default function pokemonDetail(props) {
 
   function catchPokemon(){
     const capture = Math.floor(Math.random() * 100) 
- 
-    // if( capture < 50 ){
+    if( capture < 50 ){
       namePokemon();
-    // }else{
-    //   alert('fail to capture')
-    // }
+    }else{
+      alert('fail to capture')
+    }
   }
 
   function namePokemon(){
     let end = false;  
     // prompt can be blocked but a faster way to make this prototype
     while (!end ){
-      const nickname = prompt('Name Your captured pokemon',pokemonObj.name )
+      const nickname = prompt('Name Your captured pokemon',pokemonObj.name ).trim()
       if( nickname === null && nickname !== '' ){
         alert('pokemon released')
         end = true;
         break;
       }else{
         if(myPokemon.list.hasOwnProperty(nickname)){
-          alert(`nickname:${nickname} has been taken `)
-        }else{ 
+          alert(`nickname ${nickname} has been taken `)
+        }if(nickname > 40){
+          alert(`nickname ${nickname} too long shorten it to 40 word maximum `)
+        }
+        else{ 
           alert(pokemonObj.name + ' has been named ' + nickname)
           myPokemon.total += 1;
           myPokemon.list[nickname] ={

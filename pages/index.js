@@ -4,10 +4,13 @@ import PokemonCard from '../components/pokemonCard';
 import {useState,useEffect} from 'react';
 import Api from './api'
 import { useRouter } from 'next/router'
+import { connect } from "react-redux"
+import { setPokeList } from "../redux/actions/main"
+import Image from 'next/image'
 
-export default function PokemonList() {
-  let [pokemonList,setPokemonList] = useState({}); 
-  let [startoffset,setoffset] = useState(0) 
+function PokemonList(props) {
+  const { pokeData, setPokeList,offset,limit, firstLoad} = props;
+
   let [load,setLoad] = useState(true) 
   let [reachend,setReachend] = useState(false)  
   let [myPokemon, setMyPokemon] = useState({
@@ -15,31 +18,35 @@ export default function PokemonList() {
     list:{}
   })
 
-  const limit = 12;
   const router = useRouter()
 
   useEffect(() => {
     // Your code here
-    fetchPokemonList()
+    if(!firstLoad){
+      fetchPokemonList()
+    }else{
+      setLoad(false)
+    }
     const storage = localStorage.getItem('MyPokemon') 
     if( storage ){
       setMyPokemon(JSON.parse(storage) ) 
     } 
+    
 
   }, []);
   function fetchPokemonList (){ 
-    Api.getPokemonList(limit,startoffset).then(res => setPokemon(res) 
+    Api.getPokemonList(limit,offset).then(
+      res => setPokemon(res) 
     )   
   }  
   
-  
   function setPokemon(data){ 
-    const newData = data.results  
+    const newData = data.results
     const pokemonObj =  newData.reduce((acc,info )=>( acc[info.id] = info ,acc) ,{})
-    setPokemonList(  Object.assign(pokemonObj, pokemonList) ) 
-    if( data.next !== null ){ 
-      setoffset(startoffset + limit )
-    }else{
+    setPokeList ( Object.assign(pokemonObj, pokeData) );
+
+    if( data.next === null ){ 
+      // setoffset(startoffset + limit ) 
       setReachend(true); 
     } 
     setLoad(false);
@@ -52,20 +59,20 @@ export default function PokemonList() {
   return (
     <Layout> 
       <Head>
-        <title>Pokemon list</title>
-        <link rel="icon" href="../assets/icons/pokemonIcon.png" />
+        <title>Pokemon list</title> 
+
       </Head>
       <div className="pokemon-list"> 
-        <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div> 
-        { Object.keys(pokemonList).map((id) =>  
+        <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div>  
+        { Object.keys(pokeData).map((id) =>  
           <div 
           key={id}
           className="pokemon-click-wrapper"
-          onClick={()=>selectPokemon(pokemonList[id]) }>
+          onClick={()=>selectPokemon(pokeData[id]) }>
               <PokemonCard 
               id={id}
-              url={pokemonList[id].image}
-              name={pokemonList[id].name}
+              url={pokeData[id].image}
+              name={pokeData[id].name}
             />
           </div> 
         )}
@@ -84,4 +91,19 @@ export default function PokemonList() {
       </div>
     </Layout>
   )
-}
+} 
+
+const mapStateToProps = state => {
+  return { 
+    pokeData: state.main.data,
+    offset: state.main.offset,
+    limit: state.main.limit, 
+    firstLoad: state.main.firstLoad,
+  }
+ }
+ 
+ const mapDispatchToProps = {
+  setPokeList
+ }
+ 
+ export default connect(mapStateToProps, mapDispatchToProps)(PokemonList)
