@@ -45,9 +45,9 @@ export default function pokemonDetail(props) {
 
   function namePokemon(){
     let end = false;  
-    // prompt can be blocked but a faster way to make this prototype than making a nothe modal
+    // prompt can be blocked but a faster way to make this prototype
     while (!end ){
-      const nickname = prompt('Name Your captured pokemon(Max 40 word)',pokemonObj.name ).trim()
+      const nickname = prompt('Name Your captured pokemon',pokemonObj.name ).trim()
       if( nickname === null && nickname !== '' ){
         alert('pokemon released')
         end = true;
