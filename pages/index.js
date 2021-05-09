@@ -41,6 +41,7 @@ function PokemonList(props) {
   }  
   
   function setPokemon(data){ 
+    console.log(data)
     const newData = data.results
     const pokemonObj =  newData.reduce((acc,info )=>( acc[info.id] = info ,acc) ,{})
     setPokeList ( Object.assign(pokemonObj, pokeData) );
