@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`check snapshot on default 1`] = `
+<div
+  className="pokemon-card-container"
+>
+  <div
+    className="pokemon-display"
+  >
+    <img
+      alt="Bulbasaur"
+      src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+    />
+  </div>
+  <div
+    className="pokemon-card-description"
+  >
+    <div
+      className="description-id"
+    >
+      #
+      1
+    </div>
+    <h2
+      className="description-Name"
+    >
+      Bulbasaur
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`check snapshot on default 2`] = `
+<div
+  className="pokemon-card-container"
+>
+  <div
+    className="pokemon-display"
+  >
+    <img
+      alt="Bulbasaur"
+      src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+    />
+  </div>
+  <div
+    className="pokemon-card-description"
+  >
+    <div
+      className="description-id"
+    >
+      #
+      1
+    </div>
+    <h2
+      className="description-Name"
+    >
+      Bulbasaur
+    </h2>
+  </div>
+</div>
+`;
+
+exports[`snapshot when there is new changes 1`] = `
+<div
+  className="pokemon-card-container"
+>
+  <div
+    className="pokemon-display"
+  >
+    <img
+      alt="bulbasaur"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    />
+  </div>
+  <div
+    className="pokemon-card-description"
+  >
+    <div
+      className="description-id"
+    >
+      #
+      1
+    </div>
+    <h2
+      className="description-Name"
+    >
+      bulbasaur
+    </h2>
+    <div
+      className="description-button"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Release
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`snapshot when there is new changes 2`] = `
+<div
+  className="pokemon-card-container"
+>
+  <div
+    className="pokemon-display"
+  >
+    <img
+      alt="bulbasaur"
+      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+    />
+  </div>
+  <div
+    className="pokemon-card-description"
+  >
+    <div
+      className="description-id"
+    >
+      #
+      1
+    </div>
+    <h2
+      className="description-Name"
+    >
+      bulbasaur
+    </h2>
+    <div
+      className="description-button"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Release
+      </button>
+    </div>
+  </div>
+</div>
+`;

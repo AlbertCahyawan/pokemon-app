@@ -39,6 +39,10 @@ export default function MyPokemonList() {
         <title>my Pokemon List</title>
       </Head>
       <div className="personal-pokemon-list">  
+      {(myPokemon.total === 0) ?
+        <div className="pokemon-total">You have no pokemon try catch them first</div>:  
+        <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div>  
+      }
         <div className="pokemon-total">Total Owned Pokemon:{myPokemon.total} </div>  
         { Object.keys(myPokemon.list).map((key,i)=>{
             return ( 
